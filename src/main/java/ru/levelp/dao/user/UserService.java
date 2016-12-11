@@ -1,11 +1,13 @@
 package ru.levelp.dao.user;
 
+import org.springframework.stereotype.Service;
 import ru.levelp.dao.BaseService;
 import ru.levelp.entities.User;
 
 import java.util.List;
 
-public class UserService extends BaseService<User> implements UserDAO {
+@Service("userService")
+public class UserService extends BaseService<User, String> implements UserDAO {
 
     public UserService() {
         super(User.class);
@@ -27,6 +29,12 @@ public class UserService extends BaseService<User> implements UserDAO {
     public User getByEmail(String email) {
         return request().createQuery(User.class)
                 .field("email").equal(email)
+                .get();
+    }
+
+    public User getByToken(String token) {
+        return request().createQuery(User.class)
+                .field("token").equal(token)
                 .get();
     }
 }

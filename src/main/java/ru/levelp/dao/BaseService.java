@@ -5,13 +5,12 @@ import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import ru.levelp.entities.BaseEntity;
 
-public abstract class BaseService<E extends BaseEntity> implements BaseDAO<E> {
+public abstract class BaseService<E extends BaseEntity, ID> implements BaseDAO<E, ID> {
     private Datastore db;
     private Class<E> entityType;
 
     public BaseService(Class<E> entityType) {
         this.entityType = entityType;
-
         Morphia morphia = new Morphia();
         db = morphia.createDatastore(
                 new MongoClient("localhost"), "levelupnotes");
@@ -30,7 +29,7 @@ public abstract class BaseService<E extends BaseEntity> implements BaseDAO<E> {
         db.delete(note);
     }
 
-    public E get(String id) {
+    public E get(ID id) {
         return db.get(entityType, id);
     }
 

@@ -6,7 +6,7 @@ import ru.levelp.entities.Note;
 
 import java.util.List;
 
-public class NoteService extends BaseService<Note> implements NoteDAO {
+public class NoteService extends BaseService<Note, String> implements NoteDAO {
 
     public NoteService() {
         super(Note.class);
