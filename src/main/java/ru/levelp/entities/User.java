@@ -1,14 +1,18 @@
 package ru.levelp.entities;
 
+import com.google.gson.annotations.Expose;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
 @Entity("users")
 public class User implements BaseEntity<String> {
     @Id
+    @Expose
     private String id;
+    @Expose
     private String email;
     private String pwdHash;
+    @Expose
     private String name;
     private String token;
 

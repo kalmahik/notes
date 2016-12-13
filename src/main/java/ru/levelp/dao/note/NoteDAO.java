@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface NoteDAO extends BaseDAO<Note, String> {
 
-    List<Note> getForUser(String id);
+    List<Note> getNotesForUser(String id);
 
 }

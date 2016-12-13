@@ -13,12 +13,14 @@ public class UserService extends BaseService<User, String> implements UserDAO {
         super(User.class);
     }
 
+    @Override
     public List<User> getAll() {
         return request().createQuery(User.class)
                 .order("name")
                 .asList();
     }
 
+    @Override
     public List<User> get(List<String> ids) {
         return request().createQuery(User.class)
                 .field("id").in(ids)
@@ -26,12 +28,14 @@ public class UserService extends BaseService<User, String> implements UserDAO {
                 .asList();
     }
 
+    @Override
     public User getByEmail(String email) {
         return request().createQuery(User.class)
                 .field("email").equal(email)
                 .get();
     }
 
+    @Override
     public User getByToken(String token) {
         return request().createQuery(User.class)
                 .field("token").equal(token)

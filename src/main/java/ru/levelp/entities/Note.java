@@ -1,5 +1,6 @@
 package ru.levelp.entities;
 
+import com.google.gson.annotations.Expose;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
@@ -8,12 +9,19 @@ import java.util.List;
 @Entity("notes")
 public class Note implements BaseEntity<String> {
     @Id
+    @Expose
     private String id;
+    @Expose
     private String title;
+    @Expose
     private String body;
+    @Expose
     private long created;
+    @Expose
     private long updated;
+    @Expose
     private String author;
+    @Expose
     private List<AccessRight> accessRights;
 
     public Note() {
